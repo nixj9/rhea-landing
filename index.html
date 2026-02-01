@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RHEA - Institutional Real Estate for Everyone</title>
+    <meta name="description" content="Own commercial real estate for $500. 6-9% annual yields paid monthly. Invest alongside institutions in data centers, logistics, and premium office.">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #0B6B4F;
+            --secondary-green: #10B981;
+            --white: #FFFFFF;
+            --off-white: #FAFAFA;
+            --light-gray: #F5F5F5;
+            --text-primary: #1A1A1A;
+            --text-secondary: #6B7280;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            color: var(--text-primary);
+            background: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(11, 107, 79, 0.1);
+            z-index: 1000;
+            animation: slideDown 0.6s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            letter-spacing: -0.02em;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            background: var(--off-white);
+            border-radius: 6px;
+            border: 1px solid rgba(11, 107, 79, 0.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, var(--off-white) 0%, var(--white) 100%);
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-eyebrow {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--secondary-green);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            letter-spacing: -0.03em;
+        }
+
+        h1 .highlight {
+            color: var(--primary-green);
+            font-style: italic;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            line-height: 1.7;
+            max-width: 540px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .stat {
+            border-left: 2px solid var(--secondary-green);
+            padding-left: 1rem;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary-green);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Email Form */
+        .email-form {
+            animation: fadeInUp 0.8s ease-out 0.6s backwards;
+        }
+
+        .form-container {
+            background: var(--white);
+            border: 1px solid rgba(11, 107, 79, 0.2);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(11, 107, 79, 0.08);
+            max-width: 500px;
+        }
+
+        .form-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .form-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        input[type="email"] {
+            flex: 1;
+            padding: 1rem 1.25rem;
+            border: 1px solid #E5E7EB;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        input[type="email"]:focus {
+            outline: none;
+            border-color: var(--secondary-green);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+
+        button {
+            background: var(--primary-green);
+            color: var(--white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'DM Sans', sans-serif;
+            white-space: nowrap;
+        }
+
+        button:hover {
+            background: #094d39;
+            transform: translateY(-1px);
+            box-shadow: 0 8px 16px rgba(11, 107, 79, 0.2);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .form-note {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+
+        .success-message {
+            display: none;
+            background: #ECFDF5;
+            border: 1px solid var(--secondary-green);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            color: var(--primary-green);
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .error-message {
+            display: none;
+            background: #FEE2E2;
+            border: 1px solid #EF4444;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            color: #DC2626;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .error-message.show {
+            display: block;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        /* Investment Options */
+        .investment-options {
+            padding: 4rem 2rem 3rem;
+            background: var(--off-white);
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-eyebrow {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--secondary-green);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        /* Features Grid */
+        .features {
+            padding: 6rem 2rem;
+            background: var(--white);
+            position: relative;
+        }
+
+        .features::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(11, 107, 79, 0.2), transparent);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--off-white);
+            border: 1px solid rgba(11, 107, 79, 0.1);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-green), var(--secondary-green));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(11, 107, 79, 0.12);
+            background: var(--white);
+        }
+
+        .feature-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .feature-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .trust-section::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .trust-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .trust-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .trust-description {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .trust-badge-item {
+            padding: 0.75rem 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .badge-text {
+            font-size: 0.95rem;
+            font-weight: 500;
+            opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-primary);
+            color: var(--white);
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .footer-note {
+            opacity: 0.6;
+            font-size: 0.85rem;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            h1 {
+                font-size: 3rem;
+            }
+
+            .hero-stats {
+                gap: 2rem;
+            }
+
+            .form-container {
+                max-width: 100%;
+            }
+
+            .features-grid,
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .input-group {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            .trust-badges {
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">RHEA</div>
+            <div class="trust-badge">Bank-grade security</div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-eyebrow">Institutional Real Estate</div>
+                <h1>Own a slice of <span class="highlight">the city</span> for $500</h1>
+                <p class="hero-description">
+                    Invest alongside institutions in the exact same deals—6-9% annual yields paid monthly. No separate "retail tier." Just you, institutional capital, and commercial real estate that was once reserved for the wealthy and connected.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">$500</span>
+                        <span class="stat-label">Minimum</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">6-9%</span>
+                        <span class="stat-label">Annual Yield</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">Monthly</span>
+                        <span class="stat-label">Distributions</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="email-form">
+                <div class="form-container">
+                    <h3 class="form-title">Join the Waitlist</h3>
+                    <p class="form-subtitle">Be among the first to access institutional-grade real estate investments.</p>
+                    <form id="waitlistForm">
+                        <div class="input-group">
+                            <input 
+                                type="email" 
+                                id="emailInput" 
+                                placeholder="Enter your email" 
+                                required
+                                autocomplete="email"
+                            >
+                            <button type="submit" id="submitBtn">Join</button>
+                        </div>
+                        <p class="form-note">No spam. Just early access when we launch.</p>
+                    </form>
+                    <div class="success-message" id="successMessage">
+                        ✓ You're on the list! We'll notify you when RHEA launches.
+                    </div>
+                    <div class="error-message" id="errorMessage">
+                        Something went wrong. Please try again.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="investment-options">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-eyebrow">Investment Options</div>
+                <h2 class="section-title">Choose Your Strategy</h2>
+            </div>
+            <div class="options-grid">
+                <div class="feature-card">
+                    <h3 class="feature-title">Select Individual Assets</h3>
+                    <p class="feature-description">
+                        Handpick specific commercial properties that align with your investment thesis. Review data centers in Sydney, logistics facilities in Melbourne, or premium office towers in Brisbane—then invest directly.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3 class="feature-title">Diversified Unlisted Funds</h3>
+                    <p class="feature-description">
+                        Access professionally managed portfolios with built-in diversification. These unlisted trusts spread your capital across multiple asset classes and geographies—the same funds institutions use.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-eyebrow">Why RHEA</div>
+                <h2 class="section-title">Institutional Access, Made Simple</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3 class="feature-title">Same Deals, Same Terms</h3>
+                    <p class="feature-description">
+                        Invest alongside institutions and wholesale investors in the exact same assets—no separate "retail tier." Select individual properties or diversified unlisted funds across data centers, logistics, and premium office.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3 class="feature-title">6-9% Yields, Paid Monthly</h3>
+                    <p class="feature-description">
+                        Earn institutional-grade returns with 6-9% annual yields distributed monthly. Real passive income from commercial rent, deposited directly to your account.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3 class="feature-title">No Paperwork, No Hassle</h3>
+                    <p class="feature-description">
+                        Start investing in minutes through our digital platform. No complex applications, no $100k minimums, no waiting weeks for approval.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3 class="feature-title">Bank-Grade Security</h3>
+                    <p class="feature-description">
+                        Your investments are protected with bank-level security infrastructure and held by regulated custodians you can trust.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="trust-section">
+        <div class="trust-content">
+            <h2 class="trust-title">No Separate Retail Tier. Just Real Deals.</h2>
+            <p class="trust-description">
+                The wealthy and connected have accessed these investments for decades. Now it's your turn—same opportunities, same terms, same institutional partners. RHEA doesn't create lower-grade "retail products." We open the door to the real thing.
+            </p>
+            <div class="trust-badges">
+                <div class="trust-badge-item">
+                    <span class="badge-text">Custodian-Held</span>
+                </div>
+                <div class="trust-badge-item">
+                    <span class="badge-text">Regulated</span>
+                </div>
+                <div class="trust-badge-item">
+                    <span class="badge-text">Encrypted</span>
+                </div>
+                <div class="trust-badge-item">
+                    <span class="badge-text">Transparent</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">RHEA</div>
+            <p class="footer-note">
+                © 2026 RHEA. Commercial real estate investing involves risk. Past performance does not guarantee future results. 
+                This is not financial advice. Please consult a financial advisor before investing.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // REPLACE THIS URL WITH YOUR GOOGLE APPS SCRIPT WEB APP URL
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyIwmsunHN0XGHwlCZnN7hooaLE2OlsKDwQ8szyJ5d8Abh7tF0vyBlo5IIrvxYbGeNY/exec';
+
+        document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const emailInput = document.getElementById('emailInput');
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const email = emailInput.value;
+            
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Joining...';
+            
+            // Hide any previous messages
+            successMessage.classList.remove('show');
+            errorMessage.classList.remove('show');
+            
+            try {
+                // Send to Google Sheets
+                const response = await fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        timestamp: new Date().toISOString()
+                    })
+                });
+                
+                // Show success message
+                successMessage.classList.add('show');
+                emailInput.value = '';
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.classList.remove('show');
+                }, 5000);
+                
+            } catch (error) {
+                console.error('Error:', error);
+                errorMessage.classList.add('show');
+                
+                setTimeout(() => {
+                    errorMessage.classList.remove('show');
+                }, 5000);
+            } finally {
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Join';
+            }
+        });
+    </script>
+</body>
+</html>
