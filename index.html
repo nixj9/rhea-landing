@@ -32,6 +32,7 @@
             background: var(--white);
             line-height: 1.6;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         /* Header */
@@ -67,6 +68,12 @@
             align-items: center;
         }
 
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
         .logo {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
@@ -86,6 +93,24 @@
             background: var(--off-white);
             border-radius: 6px;
             border: 1px solid rgba(11, 107, 79, 0.1);
+        }
+
+        .nav-cta-button {
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .nav-cta-button:hover {
+            background: #094d39;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(11, 107, 79, 0.2);
         }
 
         /* Hero Section */
@@ -956,12 +981,21 @@
                 padding: 1rem;
             }
 
+            .nav-right {
+                gap: 0.75rem;
+            }
+
             .logo {
                 font-size: 1.3rem;
             }
 
             .trust-badge {
                 display: none; /* Hide on very small screens to save space */
+            }
+
+            .nav-cta-button {
+                padding: 0.6rem 1rem;
+                font-size: 0.85rem;
             }
 
             /* Hero */
@@ -1225,7 +1259,10 @@
     <header>
         <nav>
             <div class="logo">RHEA Invest</div>
-            <div class="trust-badge">Bank-grade security</div>
+            <div class="nav-right">
+                <div class="trust-badge">ASIC Regulated</div>
+                <a href="#waitlist" class="nav-cta-button">Join Waitlist</a>
+            </div>
         </nav>
     </header>
 
@@ -1234,9 +1271,9 @@
         <div class="hero-content">
             <div class="hero-text">
                 <div class="hero-eyebrow">Institutional Real Estate</div>
-                <h1>Own a slice of <span class="highlight">the city</span> for $500</h1>
+                <h1>Earn <span class="highlight">6-9%</span> From Commercial Real Estate</h1>
                 <p class="hero-description">
-                    Invest alongside institutions in the exact same deals—6-9% annual yields paid monthly. No separate "retail tier." Just you, institutional capital, and commercial real estate that was once reserved for the wealthy and connected.
+                    Start with just $500. Invest alongside institutions in data centers, logistics facilities, and premium office towers. Monthly distributions from real commercial rent—the same deals once reserved for the wealthy.
                 </p>
                 <div class="hero-stats">
                     <div class="stat">
@@ -1253,7 +1290,7 @@
                     </div>
                 </div>
 
-                <div class="email-form-hero">
+                <div class="email-form-hero" id="waitlist">
                     <div class="form-container">
                         <h3 class="form-title">Join the Waitlist</h3>
                         <p class="form-subtitle">Be first to access institutional-grade real estate.</p>
