@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#0B6B4F">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>REIA - Institutional Real Estate for Everyone</title>
+    <title>RHEA Invest - Institutional Real Estate for Everyone</title>
     <meta name="description" content="Own commercial real estate for $500. 6-9% annual yields paid monthly. Invest alongside institutions in data centers, logistics, and premium office.">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -407,32 +407,56 @@
             border-radius: 50%;
         }
 
-        .stats-container {
+        /* Trust Guarantees Container */
+        .trust-guarantees-container {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 3rem;
             position: relative;
             z-index: 1;
         }
 
-        .stat-item {
+        .guarantee-item {
             text-align: center;
+            padding: 2rem 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
         }
 
-        .stat-item-number {
+        .guarantee-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .guarantee-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+        }
+
+        .guarantee-title {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            display: block;
-            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--white);
         }
 
-        .stat-item-label {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            font-weight: 500;
+        .guarantee-description {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            line-height: 1.6;
+            color: var(--white);
         }
 
         /* Asset Types Showcase */
@@ -852,18 +876,22 @@
                 font-size: 1rem;
             }
 
-            /* Stats Banner */
-            .stats-container {
+            /* Trust Guarantees Banner */
+            .trust-guarantees-container {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 2rem;
             }
 
-            .stat-item-number {
-                font-size: 2.5rem;
+            .guarantee-item {
+                padding: 1.5rem 1rem;
             }
 
-            .stat-item-label {
-                font-size: 0.95rem;
+            .guarantee-title {
+                font-size: 1.2rem;
+            }
+
+            .guarantee-description {
+                font-size: 0.85rem;
             }
 
             /* Asset Cards */
@@ -995,22 +1023,36 @@
                 font-size: 0.85rem;
             }
 
-            /* Stats Banner - Stack on mobile */
+            /* Trust Guarantees Banner - Stack on mobile */
             .stats-banner {
                 padding: 2.5rem 1rem;
             }
 
-            .stats-container {
+            .trust-guarantees-container {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1.5rem;
             }
 
-            .stat-item-number {
-                font-size: 2.5rem;
+            .guarantee-item {
+                padding: 1.5rem 1rem;
             }
 
-            .stat-item-label {
-                font-size: 0.9rem;
+            .guarantee-icon {
+                width: 56px;
+                height: 56px;
+            }
+
+            .guarantee-icon svg {
+                width: 36px;
+                height: 36px;
+            }
+
+            .guarantee-title {
+                font-size: 1.1rem;
+            }
+
+            .guarantee-description {
+                font-size: 0.85rem;
             }
 
             /* Sections */
@@ -1182,7 +1224,7 @@
 <body>
     <header>
         <nav>
-            <div class="logo">REIA</div>
+            <div class="logo">RHEA Invest</div>
             <div class="trust-badge">Bank-grade security</div>
         </nav>
     </header>
@@ -1229,7 +1271,7 @@
                             <p class="form-note">No spam. Just early access when we launch.</p>
                         </form>
                         <div class="success-message" id="successMessage">
-                            ✓ You're on the list! We'll notify you when REIA launches.
+                            ✓ You're on the list! We'll notify you when RHEA Invest launches.
                         </div>
                         <div class="error-message" id="errorMessage">
                             Something went wrong. Please try again.
@@ -1274,24 +1316,47 @@
         </div>
     </section>
 
-    <!-- Stats Banner -->
+    <!-- Trust & Regulatory Banner -->
     <section class="stats-banner">
-        <div class="stats-container">
-            <div class="stat-item">
-                <span class="stat-item-number" data-target="2.4">0</span>
-                <span class="stat-item-label">Billion in Assets</span>
+        <div class="trust-guarantees-container">
+            <div class="guarantee-item">
+                <div class="guarantee-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                </div>
+                <h3 class="guarantee-title">ASIC Regulated</h3>
+                <p class="guarantee-description">Licensed and regulated by the Australian Securities and Investments Commission</p>
             </div>
-            <div class="stat-item">
-                <span class="stat-item-number" data-target="500">0</span>
-                <span class="stat-item-label">Active Investors</span>
+            <div class="guarantee-item">
+                <div class="guarantee-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                </div>
+                <h3 class="guarantee-title">Custodian Held</h3>
+                <p class="guarantee-description">Assets held securely by independent regulated custodians</p>
             </div>
-            <div class="stat-item">
-                <span class="stat-item-number" data-target="7.2">0</span>
-                <span class="stat-item-label">Average Yield %</span>
+            <div class="guarantee-item">
+                <div class="guarantee-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                </div>
+                <h3 class="guarantee-title">Institutional Backed</h3>
+                <p class="guarantee-description">Co-invest alongside major Australian financial institutions</p>
             </div>
-            <div class="stat-item">
-                <span class="stat-item-number" data-target="24">0</span>
-                <span class="stat-item-label">Institutional Partners</span>
+            <div class="guarantee-item">
+                <div class="guarantee-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                </div>
+                <h3 class="guarantee-title">Transparent Reporting</h3>
+                <p class="guarantee-description">Regular updates and full visibility into your portfolio performance</p>
             </div>
         </div>
     </section>
@@ -1434,7 +1499,7 @@
     <section class="features">
         <div class="section-container">
             <div class="section-header">
-                <div class="section-eyebrow">Why REIA</div>
+                <div class="section-eyebrow">Why RHEA Invest</div>
                 <h2 class="section-title">Institutional Access, Made Simple</h2>
             </div>
             <div class="features-grid">
@@ -1471,7 +1536,7 @@
         <div class="trust-content">
             <h2 class="trust-title">No Separate Retail Tier. Just Real Deals.</h2>
             <p class="trust-description">
-                The wealthy and connected have accessed these investments for decades. Now it's your turn—same opportunities, same terms, same institutional partners. REIA doesn't create lower-grade "retail products." We open the door to the real thing.
+                The wealthy and connected have accessed these investments for decades. Now it's your turn—same opportunities, same terms, same institutional partners. RHEA Invest doesn't create lower-grade "retail products." We open the door to the real thing.
             </p>
             <div class="trust-badges">
                 <div class="trust-badge-item">
@@ -1493,9 +1558,9 @@
     <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">REIA</div>
+            <div class="footer-logo">RHEA Invest</div>
             <p class="footer-note">
-                © 2026 REIA. Commercial real estate investing involves risk. Past performance does not guarantee future results. 
+                © 2026 RHEA Invest. Commercial real estate investing involves risk. Past performance does not guarantee future results. 
                 This is not financial advice. Please consult a financial advisor before investing.
             </p>
         </div>
@@ -1552,45 +1617,6 @@
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Join';
             }
-        });
-
-        // Animated counter for stats
-        function animateCounter(element) {
-            const target = parseFloat(element.getAttribute('data-target'));
-            const duration = 2000;
-            const increment = target / (duration / 16);
-            let current = 0;
-            const decimals = target % 1 !== 0 ? 1 : 0;
-
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    element.textContent = target.toFixed(decimals) + (decimals ? '' : '');
-                    clearInterval(timer);
-                } else {
-                    element.textContent = current.toFixed(decimals);
-                }
-            }, 16);
-        }
-
-        // Intersection Observer for stat counters
-        const observerOptions = {
-            threshold: 0.5,
-            rootMargin: '0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-                    entry.target.classList.add('counted');
-                    animateCounter(entry.target);
-                }
-            });
-        }, observerOptions);
-
-        // Observe all stat numbers
-        document.querySelectorAll('.stat-item-number').forEach(stat => {
-            observer.observe(stat);
         });
     </script>
 </body>
