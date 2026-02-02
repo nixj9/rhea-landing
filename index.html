@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RHEA - Institutional Real Estate for Everyone</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#0B6B4F">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>REIA - Institutional Real Estate for Everyone</title>
     <meta name="description" content="Own commercial real estate for $500. 6-9% annual yields paid monthly. Invest alongside institutions in data centers, logistics, and premium office.">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -88,7 +91,7 @@
         /* Hero Section */
         .hero {
             margin-top: 80px;
-            min-height: 90vh;
+            min-height: 95vh;
             display: flex;
             align-items: center;
             position: relative;
@@ -199,32 +202,97 @@
             letter-spacing: 0.05em;
         }
 
-        /* Email Form */
-        .email-form {
+        /* Property Gallery */
+        .property-gallery {
             animation: fadeInUp 0.8s ease-out 0.6s backwards;
+            position: relative;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            z-index: 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 1.5rem 1rem 1rem;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .gallery-subtitle {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        /* Email Form */
+        .email-form-hero {
+            margin-top: 2rem;
         }
 
         .form-container {
             background: var(--white);
             border: 1px solid rgba(11, 107, 79, 0.2);
             border-radius: 12px;
-            padding: 2.5rem;
+            padding: 2rem;
             box-shadow: 0 20px 40px rgba(11, 107, 79, 0.08);
-            max-width: 500px;
         }
 
         .form-title {
             font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
             color: var(--text-primary);
         }
 
         .form-subtitle {
             color: var(--text-secondary);
             margin-bottom: 1.5rem;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .input-group {
@@ -319,10 +387,58 @@
             animation: fadeInUp 0.5s ease-out;
         }
 
-        /* Investment Options */
-        .investment-options {
-            padding: 4rem 2rem 3rem;
-            background: var(--off-white);
+        /* Stats Banner */
+        .stats-banner {
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-banner::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        /* Asset Types Showcase */
+        .asset-showcase {
+            padding: 6rem 2rem;
+            background: var(--white);
         }
 
         .section-container {
@@ -352,20 +468,150 @@
             margin-bottom: 1rem;
         }
 
-        .options-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2.5rem;
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
         }
 
-        /* Features Grid */
-        .features {
+        .asset-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .asset-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .asset-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(11, 107, 79, 0.15);
+        }
+
+        .asset-image {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+
+        .asset-content {
+            padding: 2rem;
+        }
+
+        .asset-tag {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--primary-green);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        .asset-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .asset-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .asset-stats {
+            display: flex;
+            gap: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .asset-stat {
+            flex: 1;
+        }
+
+        .asset-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.25rem;
+        }
+
+        .asset-stat-value {
+            font-weight: 600;
+            color: var(--primary-green);
+            font-size: 1.1rem;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 6rem 2rem;
+            background: var(--off-white);
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 8px 24px rgba(11, 107, 79, 0.2);
+        }
+
+        .step-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .step-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Investment Options */
+        .investment-options {
             padding: 6rem 2rem;
             background: var(--white);
             position: relative;
         }
 
-        .features::before {
+        .investment-options::before {
             content: "";
             position: absolute;
             top: 0;
@@ -375,6 +621,18 @@
             background: linear-gradient(90deg, transparent, rgba(11, 107, 79, 0.2), transparent);
         }
 
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        /* Features Grid */
+        .features {
+            padding: 6rem 2rem;
+            background: var(--off-white);
+        }
+
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -382,7 +640,7 @@
         }
 
         .feature-card {
-            background: var(--off-white);
+            background: var(--white);
             border: 1px solid rgba(11, 107, 79, 0.1);
             border-radius: 16px;
             padding: 2.5rem;
@@ -411,7 +669,6 @@
         .feature-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 20px 40px rgba(11, 107, 79, 0.12);
-            background: var(--white);
         }
 
         .feature-title {
@@ -520,42 +777,182 @@
             text-align: center;
         }
 
-        /* Responsive */
+        /* Responsive - Mobile Optimized */
         @media (max-width: 968px) {
+            /* Header adjustments */
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .trust-badge {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            /* Hero Section */
+            .hero {
+                min-height: auto;
+                padding: 2rem 0;
+            }
+
             .hero-content {
                 grid-template-columns: 1fr;
-                gap: 3rem;
+                gap: 2.5rem;
+                padding: 2rem 1.5rem;
             }
 
             h1 {
-                font-size: 3rem;
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero-description {
+                font-size: 1.1rem;
+                margin-bottom: 2rem;
             }
 
             .hero-stats {
+                gap: 1.5rem;
+                flex-wrap: wrap;
+            }
+
+            .stat {
+                flex: 1;
+                min-width: 140px;
+            }
+
+            .stat-number {
+                font-size: 1.75rem;
+            }
+
+            /* Gallery - show 2 columns on tablet */
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+
+            /* Sections */
+            .stats-banner,
+            .asset-showcase,
+            .how-it-works,
+            .investment-options,
+            .features {
+                padding: 3rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-description {
+                font-size: 1rem;
+            }
+
+            /* Stats Banner */
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
                 gap: 2rem;
             }
 
-            .form-container {
-                max-width: 100%;
+            .stat-item-number {
+                font-size: 2.5rem;
             }
 
+            .stat-item-label {
+                font-size: 0.95rem;
+            }
+
+            /* Asset Cards */
+            .asset-grid,
             .features-grid,
             .options-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .asset-image {
+                height: 200px;
+            }
+
+            .asset-content {
+                padding: 1.5rem;
+            }
+
+            /* How It Works */
+            .steps-container {
+                gap: 2.5rem;
+            }
+
+            .step-number {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .step-title {
+                font-size: 1.2rem;
+            }
+
+            /* Form */
+            .form-container {
+                padding: 1.5rem;
+            }
+
+            /* Trust Section */
+            .trust-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .trust-title {
+                font-size: 2rem;
+            }
+
+            .trust-description {
+                font-size: 1.05rem;
+            }
+
+            /* Footer */
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
             }
         }
 
         @media (max-width: 640px) {
+            /* Even smaller mobile devices */
+            nav {
+                padding: 1rem;
+            }
+
+            .logo {
+                font-size: 1.3rem;
+            }
+
+            .trust-badge {
+                display: none; /* Hide on very small screens to save space */
+            }
+
+            /* Hero */
+            .hero-content {
+                padding: 1.5rem 1rem;
+            }
+
             h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
+                line-height: 1.2;
             }
 
-            .input-group {
-                flex-direction: column;
+            .hero-eyebrow {
+                font-size: 0.8rem;
             }
 
-            button {
-                width: 100%;
+            .hero-description {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
             }
 
             .hero-stats {
@@ -563,8 +960,221 @@
                 gap: 1.5rem;
             }
 
-            .trust-badges {
+            .stat {
+                min-width: 100%;
+            }
+
+            /* Gallery - single column on mobile */
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+
+            .gallery-item {
+                aspect-ratio: 16/9; /* Wider aspect ratio for mobile */
+            }
+
+            /* Form - full width inputs */
+            .input-group {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+
+            input[type="email"],
+            button {
+                width: 100%;
+                padding: 0.875rem 1rem;
+                font-size: 0.95rem;
+            }
+
+            .form-title {
+                font-size: 1.2rem;
+            }
+
+            .form-subtitle {
+                font-size: 0.85rem;
+            }
+
+            /* Stats Banner - Stack on mobile */
+            .stats-banner {
+                padding: 2.5rem 1rem;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stat-item-number {
+                font-size: 2.5rem;
+            }
+
+            .stat-item-label {
+                font-size: 0.9rem;
+            }
+
+            /* Sections */
+            .asset-showcase,
+            .how-it-works,
+            .investment-options,
+            .features {
+                padding: 2.5rem 1rem;
+            }
+
+            .section-header {
+                margin-bottom: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .section-eyebrow {
+                font-size: 0.75rem;
+            }
+
+            .section-description {
+                font-size: 0.95rem;
+            }
+
+            /* Asset Cards - More compact */
+            .asset-image {
+                height: 180px;
+            }
+
+            .asset-content {
+                padding: 1.25rem;
+            }
+
+            .asset-title {
+                font-size: 1.25rem;
+            }
+
+            .asset-description {
+                font-size: 0.9rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .asset-stats {
                 gap: 1.5rem;
+            }
+
+            .asset-stat-value {
+                font-size: 1rem;
+            }
+
+            /* How It Works */
+            .steps-container {
+                gap: 2rem;
+            }
+
+            .step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+                margin-bottom: 1rem;
+            }
+
+            .step-title {
+                font-size: 1.1rem;
+            }
+
+            .step-description {
+                font-size: 0.9rem;
+            }
+
+            /* Feature Cards */
+            .feature-card {
+                padding: 1.75rem;
+            }
+
+            .feature-title {
+                font-size: 1.2rem;
+            }
+
+            .feature-description {
+                font-size: 0.9rem;
+            }
+
+            /* Trust Section */
+            .trust-section {
+                padding: 2.5rem 1rem;
+            }
+
+            .trust-title {
+                font-size: 1.5rem;
+            }
+
+            .trust-description {
+                font-size: 1rem;
+            }
+
+            .trust-badges {
+                gap: 0.75rem;
+            }
+
+            .trust-badge-item {
+                padding: 0.6rem 1rem;
+            }
+
+            .badge-text {
+                font-size: 0.85rem;
+            }
+
+            /* Footer */
+            footer {
+                padding: 2rem 1rem 1.5rem;
+            }
+
+            .footer-logo {
+                font-size: 1.3rem;
+            }
+
+            .footer-note {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Improve touch targets for mobile */
+        @media (hover: none) and (pointer: coarse) {
+            /* Mobile touch devices */
+            button,
+            input[type="email"],
+            .gallery-item,
+            .asset-card,
+            .feature-card {
+                -webkit-tap-highlight-color: rgba(16, 185, 129, 0.2);
+            }
+
+            /* Larger touch targets */
+            button {
+                min-height: 48px;
+            }
+
+            input[type="email"] {
+                min-height: 48px;
+            }
+
+            /* Disable hover effects on touch devices */
+            .gallery-item:hover .gallery-overlay {
+                transform: translateY(100%);
+            }
+
+            /* Show overlay by default on mobile after tap */
+            .gallery-overlay {
+                transform: translateY(0);
+                background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            }
+        }
+
+        /* Performance: Reduce animations on low-end devices */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
@@ -572,11 +1182,12 @@
 <body>
     <header>
         <nav>
-            <div class="logo">RHEA</div>
+            <div class="logo">REIA</div>
             <div class="trust-badge">Bank-grade security</div>
         </nav>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <div class="hero-text">
@@ -599,36 +1210,203 @@
                         <span class="stat-label">Distributions</span>
                     </div>
                 </div>
+
+                <div class="email-form-hero">
+                    <div class="form-container">
+                        <h3 class="form-title">Join the Waitlist</h3>
+                        <p class="form-subtitle">Be first to access institutional-grade real estate.</p>
+                        <form id="waitlistForm">
+                            <div class="input-group">
+                                <input 
+                                    type="email" 
+                                    id="emailInput" 
+                                    placeholder="Enter your email" 
+                                    required
+                                    autocomplete="email"
+                                >
+                                <button type="submit" id="submitBtn">Join</button>
+                            </div>
+                            <p class="form-note">No spam. Just early access when we launch.</p>
+                        </form>
+                        <div class="success-message" id="successMessage">
+                            ✓ You're on the list! We'll notify you when REIA launches.
+                        </div>
+                        <div class="error-message" id="errorMessage">
+                            Something went wrong. Please try again.
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="email-form">
-                <div class="form-container">
-                    <h3 class="form-title">Join the Waitlist</h3>
-                    <p class="form-subtitle">Be among the first to access institutional-grade real estate investments.</p>
-                    <form id="waitlistForm">
-                        <div class="input-group">
-                            <input 
-                                type="email" 
-                                id="emailInput" 
-                                placeholder="Enter your email" 
-                                required
-                                autocomplete="email"
-                            >
-                            <button type="submit" id="submitBtn">Join</button>
+            <!-- Property Gallery -->
+            <div class="property-gallery">
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=600&q=80" alt="Data Center" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">Data Centers</div>
+                            <div class="gallery-subtitle">Cloud infrastructure hubs</div>
                         </div>
-                        <p class="form-note">No spam. Just early access when we launch.</p>
-                    </form>
-                    <div class="success-message" id="successMessage">
-                        ✓ You're on the list! We'll notify you when RHEA launches.
                     </div>
-                    <div class="error-message" id="errorMessage">
-                        Something went wrong. Please try again.
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&q=80" alt="Logistics Warehouse" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">Logistics Facilities</div>
+                            <div class="gallery-subtitle">E-commerce warehouses</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80" alt="Premium Office" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">Premium Office</div>
+                            <div class="gallery-subtitle">A-grade corporate towers</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1519567241046-7f570eee3ce6?w=600&q=80" alt="Retail Centers" loading="lazy">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">Retail Centers</div>
+                            <div class="gallery-subtitle">Shopping & lifestyle hubs</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Stats Banner -->
+    <section class="stats-banner">
+        <div class="stats-container">
+            <div class="stat-item">
+                <span class="stat-item-number" data-target="2.4">0</span>
+                <span class="stat-item-label">Billion in Assets</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-item-number" data-target="500">0</span>
+                <span class="stat-item-label">Active Investors</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-item-number" data-target="7.2">0</span>
+                <span class="stat-item-label">Average Yield %</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-item-number" data-target="24">0</span>
+                <span class="stat-item-label">Institutional Partners</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Asset Types Showcase -->
+    <section class="asset-showcase">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-eyebrow">Asset Portfolio</div>
+                <h2 class="section-title">Invest in Australia's Prime Real Estate</h2>
+                <p class="section-description">
+                    Access institutional-grade properties across major Australian cities. Each asset is carefully selected for strong fundamentals and reliable income generation.
+                </p>
+            </div>
+            <div class="asset-grid">
+                <div class="asset-card">
+                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80" alt="Data Center Facility" class="asset-image" loading="lazy">
+                    <div class="asset-content">
+                        <span class="asset-tag">Technology</span>
+                        <h3 class="asset-title">Sydney Data Center</h3>
+                        <p class="asset-description">
+                            Tier III certified facility hosting cloud infrastructure for major tech companies. Long-term leases with global tenants.
+                        </p>
+                        <div class="asset-stats">
+                            <div class="asset-stat">
+                                <div class="asset-stat-label">Yield</div>
+                                <div class="asset-stat-value">8.2%</div>
+                            </div>
+                            <div class="asset-stat">
+                                <div class="asset-stat-label">Occupancy</div>
+                                <div class="asset-stat-value">100%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="asset-card">
+                    <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80" alt="Logistics Hub" class="asset-image" loading="lazy">
+                    <div class="asset-content">
+                        <span class="asset-tag">Logistics</span>
+                        <h3 class="asset-title">Melbourne Logistics Hub</h3>
+                        <p class="asset-description">
+                            Strategic warehouse facility serving major e-commerce operations. Prime location near Port of Melbourne with modern automation.
+                        </p>
+                        <div class="asset-stats">
+                            <div class="asset-stat">
+                                <div class="asset-stat-label">Yield</div>
+                                <div class="asset-stat-value">7.5%</div>
+                            </div>
+                            <div class="asset-stat">
+                                <div class="asset-stat-label">Lease Term</div>
+                                <div class="asset-stat-value">12 yrs</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="asset-card">
+                    <img src="https://images.unsplash.com/photo-1577495508326-19a1b3cf65b7?w=800&q=80" alt="Office Tower" class="asset-image" loading="lazy">
+                    <div class="asset-content">
+                        <span class="asset-tag">Office</span>
+                        <h3 class="asset-title">Brisbane Premium Office</h3>
+                        <p class="asset-description">
+                            Grade A office tower in Brisbane CBD. Green-star rated with premium corporate tenants including ASX200 companies.
+                        </p>
+                        <div class="asset-stats">
+                            <div class="asset-stat">
+                                <div class="asset-stat-label">Yield</div>
+                                <div class="asset-stat-value">6.8%</div>
+                            </div>
+                            <div class="asset-stat">
+                                <div class="asset-stat-label">Rating</div>
+                                <div class="asset-stat-value">5 Star</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="section-container">
+            <div class="section-header">
+                <div class="section-eyebrow">Simple Process</div>
+                <h2 class="section-title">Start Investing in 3 Easy Steps</h2>
+            </div>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Create Your Account</h3>
+                    <p class="step-description">
+                        Sign up in minutes with just your email and basic details. Complete our simple verification process online—no paperwork required.
+                    </p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Choose Your Assets</h3>
+                    <p class="step-description">
+                        Browse institutional-grade properties or diversified funds. Select individual assets or spread your investment across multiple properties.
+                    </p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Earn Monthly Income</h3>
+                    <p class="step-description">
+                        Receive monthly distributions directly to your account. Track your portfolio performance and reinvest earnings whenever you want.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Investment Options -->
     <section class="investment-options">
         <div class="section-container">
             <div class="section-header">
@@ -652,10 +1430,11 @@
         </div>
     </section>
 
+    <!-- Features -->
     <section class="features">
         <div class="section-container">
             <div class="section-header">
-                <div class="section-eyebrow">Why RHEA</div>
+                <div class="section-eyebrow">Why REIA</div>
                 <h2 class="section-title">Institutional Access, Made Simple</h2>
             </div>
             <div class="features-grid">
@@ -687,11 +1466,12 @@
         </div>
     </section>
 
+    <!-- Trust Section -->
     <section class="trust-section">
         <div class="trust-content">
             <h2 class="trust-title">No Separate Retail Tier. Just Real Deals.</h2>
             <p class="trust-description">
-                The wealthy and connected have accessed these investments for decades. Now it's your turn—same opportunities, same terms, same institutional partners. RHEA doesn't create lower-grade "retail products." We open the door to the real thing.
+                The wealthy and connected have accessed these investments for decades. Now it's your turn—same opportunities, same terms, same institutional partners. REIA doesn't create lower-grade "retail products." We open the door to the real thing.
             </p>
             <div class="trust-badges">
                 <div class="trust-badge-item">
@@ -710,11 +1490,12 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
-            <div class="footer-logo">RHEA</div>
+            <div class="footer-logo">REIA</div>
             <p class="footer-note">
-                © 2026 RHEA. Commercial real estate investing involves risk. Past performance does not guarantee future results. 
+                © 2026 REIA. Commercial real estate investing involves risk. Past performance does not guarantee future results. 
                 This is not financial advice. Please consult a financial advisor before investing.
             </p>
         </div>
@@ -722,8 +1503,9 @@
 
     <script>
         // REPLACE THIS URL WITH YOUR GOOGLE APPS SCRIPT WEB APP URL
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyIwmsunHN0XGHwlCZnN7hooaLE2OlsKDwQ8szyJ5d8Abh7tF0vyBlo5IIrvxYbGeNY/exec';
+        const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
 
+        // Email form submission
         document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -733,16 +1515,13 @@
             const errorMessage = document.getElementById('errorMessage');
             const email = emailInput.value;
             
-            // Disable button and show loading state
             submitBtn.disabled = true;
             submitBtn.textContent = 'Joining...';
             
-            // Hide any previous messages
             successMessage.classList.remove('show');
             errorMessage.classList.remove('show');
             
             try {
-                // Send to Google Sheets
                 const response = await fetch(GOOGLE_SCRIPT_URL, {
                     method: 'POST',
                     mode: 'no-cors',
@@ -755,11 +1534,9 @@
                     })
                 });
                 
-                // Show success message
                 successMessage.classList.add('show');
                 emailInput.value = '';
                 
-                // Hide success message after 5 seconds
                 setTimeout(() => {
                     successMessage.classList.remove('show');
                 }, 5000);
@@ -772,10 +1549,48 @@
                     errorMessage.classList.remove('show');
                 }, 5000);
             } finally {
-                // Re-enable button
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Join';
             }
+        });
+
+        // Animated counter for stats
+        function animateCounter(element) {
+            const target = parseFloat(element.getAttribute('data-target'));
+            const duration = 2000;
+            const increment = target / (duration / 16);
+            let current = 0;
+            const decimals = target % 1 !== 0 ? 1 : 0;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target.toFixed(decimals) + (decimals ? '' : '');
+                    clearInterval(timer);
+                } else {
+                    element.textContent = current.toFixed(decimals);
+                }
+            }, 16);
+        }
+
+        // Intersection Observer for stat counters
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+                    entry.target.classList.add('counted');
+                    animateCounter(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all stat numbers
+        document.querySelectorAll('.stat-item-number').forEach(stat => {
+            observer.observe(stat);
         });
     </script>
 </body>
